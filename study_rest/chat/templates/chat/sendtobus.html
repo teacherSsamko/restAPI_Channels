@@ -54,7 +54,20 @@
         socket.on('connect', function(){
             console.log('connected')
         })
-        socket.emit('send_event', 'hi')
+        socket.emit('send_event', {
+                        event: `video_start_upscaling`,
+						userId: 1,
+						idx: 0,
+						progress: 10,
+                })
+        // ToDo: port below code 
+        // redisProgressUpdate(userReqInfo.hashKeyName, 10, true);
+        socket.emit('send_event', {
+            event: `video_progress_update`,
+            userId: 1,
+            idx: 0,
+            progress: 20,
+        });
     </script>
 </body>
 </html>
